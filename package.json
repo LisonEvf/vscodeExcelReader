@@ -10,14 +10,35 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:excelreader.helloWorld"
+		"onCommand:excelreader.helloWorld",
+		"onCustomEditor:excelreader.erv"
 	],
-	"main": "./extension.js",
+	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "excelreader.helloWorld",
 				"title": "Hello World"
+			}
+		],
+        "customEditors": [
+			{
+				"viewType": "excelreader.erv",
+				"displayName": "Excel Reader",
+				"selector": [
+					{
+						"filenamePattern": "*.xls"
+					},
+					{
+						"filenamePattern": "*.xlsx"
+					},
+					{
+						"filenamePattern": "*.csv"
+					},
+					{
+						"filenamePattern": "*.ods"
+					}
+				]
 			}
 		]
 	},
