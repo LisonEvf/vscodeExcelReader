@@ -21,6 +21,24 @@
 				"title": "Hello World"
 			}
 		],
+		"viewsContainers": {
+			"panel": [
+				{
+					"id": "excelreaderpanel",
+					"title": "Excel Reader",
+					"icon": ""
+				}
+			]
+		},
+		"views": {
+			"excelreaderpanel": [
+				{
+					"id": "excelreaderview",
+					"name": "ERP",
+					"visibility": "hidden"
+				}
+			]
+		},
         "customEditors": [
 			{
 				"viewType": "excelreader.erv",
