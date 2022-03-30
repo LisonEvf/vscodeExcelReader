@@ -10,38 +10,13 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:excelreader.helloWorld",
-		"onCustomEditor:excelreader.erv"
+		"onCustomEditor:excelreader.editor"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "excelreader.helloWorld",
-				"title": "Hello World"
-			}
-		],
-		"viewsContainers": {
-			"panel": [
-				{
-					"id": "excelreaderpanel",
-					"title": "Excel Reader",
-					"icon": ""
-				}
-			]
-		},
-		"views": {
-			"excelreaderpanel": [
-				{
-					"id": "excelreaderview",
-					"name": "ERP",
-					"visibility": "hidden"
-				}
-			]
-		},
         "customEditors": [
 			{
-				"viewType": "excelreader.erv",
+				"viewType": "excelreader.editor",
 				"displayName": "Excel Reader",
 				"selector": [
 					{

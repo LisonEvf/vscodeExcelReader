@@ -12,9 +12,21 @@ function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "excelreader" is now active!');
+	console.log('Congratulations, your extension "excelreader" is now active!');	
 
-	require('./excelreader')(context)
+	let CustomEditorProvider = require('./provider/excelreaderprovider')
+
+	context.subscriptions.push(
+		vscode.window.registerCustomEditorProvider('excelreader.editor',
+		new CustomEditorProvider(context),
+		{
+			webviewOptions: {
+				retainContextWhenHidden: true,
+				enableFindWidget: true
+			
+			}
+		})
+	)
 	
 }
 
