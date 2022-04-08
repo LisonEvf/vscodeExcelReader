@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCustomEditor:excelreader.editor"
+		"onCustomEditor:excelreader.editor",
+		"onView:excelreader.editor"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
