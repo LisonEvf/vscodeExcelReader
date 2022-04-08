@@ -1,4 +1,6 @@
 const vscode = require('vscode')
+const XLSX = require('xlsx')
+const fs = require('fs');
 
  class ExcelDoc {
      constructor(uri){
@@ -6,7 +8,13 @@ const vscode = require('vscode')
      }
 
      setWebviewPanel(webviewpannel){
-         webviewpannel.webview.html = `<html><body><h1>Hello world</h1></body></html>`
+         console.log(fs.readFileSync(this.uri.fsPath))
+         let workbook = XLSX.read(fs.readFileSync(this.uri.fsPath) ,{type: 'buffer'})
+         this.webviewpannel = webviewpannel
+         this.webviewpannel.webview.html = XLSX.utils.sheet_to_html(workbook.Sheets[workbook.SheetNames[0]])
+         this.webviewpannel.onDidDispose(()=>{
+             this.webviewpannel = null
+         })
      }
  }
 

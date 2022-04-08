@@ -23,20 +23,16 @@ function activate(context) {
 		vscode.window.registerCustomEditorProvider('excelreader.editor',
 		new (class CustomEditorProvider{
 			openCustomDocument(uri,context,token) {
-				// const activeEditor = vscode.window;
-				// debugger
-				// console.log('aaa',activeEditor);
-				vscode.commands.executeCommand('setContext','excelreader.test','6').then(editor => {
-					console.log('bbb',editor);
+				vscode.commands.executeCommand('workbench.action.focusFirstEditorGroup').then(() => {
+					if(vscode.window.visibleTextEditors.length <= 0){
+						vscode.commands.executeCommand('workbench.action.editorLayoutTwoRows')
+						.then(() => vscode.commands.executeCommand('workbench.action.moveEditorToNextGroup'))
+						.then(() => vscode.commands.executeCommand('workbench.action.focusFirstEditorGroup'))
+					}
 				})
-				vscode.commands.executeCommand('workbench.action.editorLayoutTwoRows')
-				.then(() => vscode.commands.executeCommand('workbench.action.focusFirstEditorGroup'))
-				.then(() => vscode.commands.executeCommand('workbench.action.moveEditorToNextGroup'))
-				.then(() => vscode.commands.executeCommand('workbench.action.focusFirstEditorGroup'))
 				return new ExcelDoc(uri);
 			}
 			resolveCustomEditor(doc,webviewpanel,token) {
-				console.log(new Date())
 				doc.setWebviewPanel(webviewpanel);
 			}
 		})(),
